@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GSB-AppliAndroid</string>
+    <string name="type_frais">Type de frais</string>
+
+    <string-array name="listeDeroulante">
+        <item>Forfait Etape</item>
+        <item>Frais Kilometriques</item>
+        <item>Nuitée Hôtel</item>
+        <item>Repas Restaurant</item>
+    </string-array>
 </resources>

@@ -6,83 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="153dp"
-        android:layout_height="43dp"
-        android:text="Menu principal"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnFF"
-        app:layout_constraintHorizontal_bias="0.635"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <Button
-        android:id="@+id/btnFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:background="#8cacd3"
-        android:text="Frais au forfait"
-        app:layout_constraintBottom_toTopOf="@+id/btnFHF"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="126dp" />
-
-    <Button
-        android:id="@+id/btnSynt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#8cacd3"
-        android:text="Synthèse du mois"
-        app:layout_constraintBottom_toTopOf="@+id/btnEnvoi"
-        app:layout_constraintTop_toBottomOf="@+id/btnFHF"
-        tools:layout_editor_absoluteX="129dp" />
-
-    <Button
-        android:id="@+id/btnEnvoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#8cacd3"
-        android:text="Envoi des données vers up"
-        app:layout_constraintBottom_toTopOf="@+id/btnParam"
-        app:layout_constraintTop_toBottomOf="@+id/btnSynt"
-        tools:layout_editor_absoluteX="96dp" />
-
-    <Button
-        android:id="@+id/btnParam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#8cacd3"
-        android:text="Paramètres"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEnvoi"
-        tools:layout_editor_absoluteX="132dp" />
-
-    <Button
-        android:id="@+id/btnFHF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#8cacd3"
-        android:text="Frais hors forfait"
-        app:layout_constraintBottom_toTopOf="@+id/btnSynt"
-        app:layout_constraintTop_toBottomOf="@+id/btnFF"
-        tools:layout_editor_absoluteX="129dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="408dp"
+        android:layout_height="132dp"
+        android:layout_marginBottom="60dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="110dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="153dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:text="Menu principal"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <Button
+            android:id="@+id/btnFF"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Frais au forfait" />
+
+        <Button
+            android:id="@+id/btnFHF"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Frais hors forfait" />
+
+        <Button
+            android:id="@+id/btnEnvoi"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Envoi des données vers up" />
+
+        <Button
+            android:id="@+id/btnSynt"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Synthese du mois" />
+
+        <Button
+            android:id="@+id/btnParam"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Paramètres" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
