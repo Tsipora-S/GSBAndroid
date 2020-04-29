@@ -45,7 +45,7 @@ public class DatabaseHelperFF extends SQLiteOpenHelper {
 
     }
 
-    public Cursor viewData() {
+    public Cursor listeFF() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "select * from " + DB_TABLE;
         Cursor cursor = db.rawQuery(query, null);

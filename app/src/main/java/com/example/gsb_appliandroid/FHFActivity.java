@@ -1,8 +1,8 @@
 package com.example.gsb_appliandroid;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +14,16 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import java.util.ArrayList;
 
 public class FHFActivity extends MainActivity implements View.OnClickListener {
     SQLiteDatabase bd;
     DatabaseHelperHF db;
-    EditText txtLibelle,txtLibelle1,txtLibelle2,txtMontant,txtMontant1,txtMontant2,txtDate,txtDate1,txtDate2;
-    CheckBox checkBox,checkBox1;
-    Button btnAjouter,btnModifier,btnSupprimer,btnRetourMenu;
+    EditText txtLibelle, txtLibelle1, txtLibelle2, txtMontant, txtMontant1, txtMontant2, txtDate, txtDate1, txtDate2;
+    CheckBox checkBox, checkBox1;
+    Button btnAjouter, btnModifier, btnSupprimer, btnRetourMenu;
     ListView leLibelle;
  /*   FHFActivity frais= new FHFActivity();
     List<FHFActivity> FraisHorsForfait;
@@ -47,9 +49,25 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
                 "libelle TEXT,montant TEXT,date TEXT);");
         leLibelle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 String text = leLibelle.getItemAtPosition(i).toString();
-                Toast.makeText(FHFActivity.this, "" +text, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FHFActivity.this, "" +text, Toast.LENGTH_SHORT).show();
+                //view.getTag();
+                //on créé une boite de dialogue
+                AlertDialog.Builder adb = new AlertDialog.Builder(FHFActivity.this);
+                adb.setTitle("Sélection Item");
+                final EditText input = new EditText(FHFActivity.this);
+                input.setText(text);
+                adb.setView(input);
+                adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String edit = input.getText().toString();
+                        listItem.set(i, edit);
+                    }
+                });
+                adb.setNegativeButton("Annuler", null);
+                adb.show();
             }
         });
         //    this.libelle1 = (EditText)this.findViewById(R.id.txtLibelle1);
@@ -63,108 +81,24 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
         //   new GetEdittext().execute();
         //  remplissageEditText();
     }
- /*   private class GetEdittext extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // dialog start
-            Log.e("Currency", "3");
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            ArrayList<String> arr_ = new ArrayList<String>();
-            arr_ = db.fetch_Edittext();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void resul) {
-            super.onPostExecute(resul);
-            // dialog dismiss
-            //hear set your edit text
-        }
-    }
-
-    
-    public void remplissageEditText(){
-    try{
-        String queryString1 = "SELECT libelle,montant,date from fraisHorsForfait where id='1'";
-        Connection con = null;
-        Statement stm1 = con.createStatement();
-        ResultSet rst1 = stm1.executeQuery(queryString1);
-        while (rst1.next()) {
-            this.txtLibelle1.setText(rst1.getString("libelle"));
-            this.txtMontant1.setText(rst1.getString("montant"));
-            this.txtDate1.setText(rst1.getString("date"));
-        }
-    }catch(SQLException e){
-        e.printStackTrace();
-    }
-    }*/
-/*    public List<String> getAllFHF() {
-        List<String> list = new ArrayList <String> ();
-
-        Cursor c = bd.rawQuery("SELECT * FROM fraisHorsForfait", null);
-        while (c.moveToNext()) {
-            String libelle = c.getString(c.getColumnIndex("libelle"));
-            String montant = c.getString(c.getColumnIndex("montant"));
-            String date = c.getString(c.getColumnIndex("date"));
-            list.add(libelle);
-            list.add(montant);
-            list.add(date);
-        }
-        return list;
-        txtLibelle1=list.getText();
-    }*/
 
     private void init() {
-        txtLibelle =(EditText) findViewById(R.id.txtLibelle);
+        txtLibelle = (EditText) findViewById(R.id.txtLibelle);
         //txtLibelle1 =(EditText) findViewById(R.id.txtLibelle1);
-        leLibelle = findViewById(R.id.listFHF);
-    //    final Editable leLibelle = (Editable) this.leLibelle;
-       /*articleBdd.open();
-        Cursor c = bd.getAllFHF();
-        String[] columns = new String[]{libelle, montant, date};
-        int[] to = new int[]{R.id.txtLibelle1, R.id.txtMontant1, R.id.txtDate1};
-        SimpleCursorAdapter dataAdapter = new SimpleCursorAdapter(this, R.layout.activity_main, c, columns, to);
-        listViewArticles.setAdapter(dataAdapter);
-        articleBdd.close();*/
-        /*sql0=bd.execSQL("select * from fraisHorsForfait");
-        new String[] {sql0};
-        for(int k=1;k<=tabFrais.size();k++){
-            for(int i=txtDate1;i<=txtMontant2;i++){
-                String sql = "select libelle from fraisHorsForfait where id="+k;
-                i=sql.toString.getText();
-            }
-        }*/
-/*        Cursor sql =bd.rawQuery("select libelle,montant,date from fraisHorsForfait where id='1'",null);
-        txtLibelle1.setText((CharSequence) sql);
-        Cursor mCur=bd.rawQuery(sql,null);
-        mCur.moveToFirst();
-        while ( !mCur.isAfterLast()) {
-            txtLibelle1= mCur.getString(mCur.getColumnIndex("libelle"));
-            txtMontant1= mCur.getString(mCur.getColumnIndex("montant"));
-            (String)txtDate1= mCur.getString(mCur.getColumnIndex("date"));
-            mCur.moveToNext();
-        }*/
-//        String sql1="select montant from fraisHorsForfait where id='1'";
-//        txtMontant1.setText(sql1);
-//        String sql2="select date from fraisHorsForfait where id='1'";
-//        txtDate1.setText(sql2);
         //txtLibelle2 =(EditText) findViewById(R.id.txtLibelle2);
-        txtMontant=(EditText)findViewById(R.id.txtMontant);
+        leLibelle = findViewById(R.id.listFHF);
+        txtMontant = (EditText) findViewById(R.id.txtMontant);
         //txtMontant1=(EditText)findViewById(R.id.txtMontant1);
         //txtMontant2=(EditText) findViewById(R.id.txtMontant2);
-        txtDate=(EditText)findViewById(R.id.txtDate);
+        txtDate = (EditText) findViewById(R.id.txtDate);
         //txtDate1=(EditText)findViewById(R.id.txtDate1);
         //txtDate2=(EditText)findViewById(R.id.txtDate2);
-        checkBox=findViewById(R.id.checkBox6);
-        checkBox1=findViewById(R.id.checkBox5);
+        //checkBox=findViewById(R.id.checkBox6);
+        //checkBox1=findViewById(R.id.checkBox5);
         btnAjouter = (Button) findViewById(R.id.btnAjouter);
-        btnModifier =(Button)findViewById(R.id.btnModif);
+        btnModifier = (Button) findViewById(R.id.btnModif);
         btnSupprimer = (Button) findViewById(R.id.btnSupprimer);
-        btnRetourMenu= (Button)findViewById(R.id.btnRetourMenu);
+        btnRetourMenu = (Button) findViewById(R.id.btnRetourMenu);
         btnAjouter.setOnClickListener(this);
         btnModifier.setOnClickListener(this);
         btnSupprimer.setOnClickListener(this);
@@ -176,50 +110,38 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
         /*leLibelle.clearFocus();
         leLibelle.setFocusable(true);
         leLibelle.setEnabled(true);*/
-        Cursor cursor = db.listeFHF();
+        final Cursor cursor = db.listeFHF();
         if (cursor.getCount() == 0) {
             Toast.makeText(FHFActivity.this, "no data To Show", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
-                listItem.add(cursor.getString(3));
-                listItem.add(cursor.getString(1));
-                listItem.add(cursor.getString(2));
+                String date = cursor.getString(3);
+                String libelle = cursor.getString(1);
+                String montant = cursor.getString(2);
+                listItem.add(date + "   " + libelle + "     " + montant);
             }
-            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItem);
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, listItem);
             leLibelle.setAdapter(adapter);
-            adapter.setNotifyOnChange(true);
-            //adapter.registerDataSetObserver(observer);
-            adapter.notifyDataSetChanged();
-            //leLibelle.setEnabled(leLibelle.isEnabled());
-            //      listItem.setEditable(true);
-            //      listItem.setCellFactory(TextFieldListCell.forListView());
+            leLibelle.setChoiceMode(leLibelle.CHOICE_MODE_SINGLE);
+            leLibelle.setItemChecked(0, true);
+            leLibelle.getCheckedItemPosition();
+            //adapter.setNotifyOnChange(true);
+            //adapter.notifyDataSetChanged();
         }
-
-        //leLibelle.setItemsCanFocus(true);
-        //leLibelle.setOnItemClickListener((AdapterView.OnItemClickListener) listItem);
-        //leLibelle.setClickable(true);
     }
-    protected Object value;
 
-    public void setValue(Object newValue) {
-        this.value = newValue;
-        adapter.notifyDataSetChanged();
+    public int Id(final int i){
+        String text = leLibelle.getItemAtPosition(i).toString();
+        int longueur = text.length();
+        final Cursor cursor = db.listeFHF();
+        cursor.moveToPosition(i);
+            int id = cursor.getInt(0);
+        return id;
     }
-    DataSetObserver observer = new DataSetObserver() {
-        @Override
-        public void onChanged() {
-            super.onChanged();
-           // setMealTotal();
-        }
-    };
 
     /*private void updateFHF() {
         Cursor cursor = db.updateHF(item);
     }*/
-
-   /* Editable ancienneValeur1=txtLibelle.getText();
-    Editable ancienneValeur2=txtMontant.getText();
-    Editable ancienneValeur3=txtDate.getText();*/
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -236,66 +158,30 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
                 videTexte();
                 break;
             case R.id.btnModif:
-                if(!checkBox.isChecked()&&!checkBox1.isChecked())
-                {
-                    AfficheMessage("Erreur", "Cocher une case");
-                    return;
-                }
-                /*DatabaseHelperHF db = new DatabaseHelperHF(this);
-
-                String libelle = this.libelle1.getText().toString();
-                String montant = this.montant1.getText().toString();
-                String date = this.date1.getText().toString();
-
-                if(libelle.equals("") || montant.equals("")|| date.equals("")) {
+                int positionCheck1 = leLibelle.getCheckedItemPosition();
+                String fraisCheck1 = leLibelle.getItemAtPosition(positionCheck1).toString();
+                if (fraisCheck1.equals("")) {
                     AfficheMessage("Erreur", "Entrer les informations");
                     return;
+                } else {
+                    String date = fraisCheck1.substring(0, 10);
+                    int longueur = fraisCheck1.length();
+                    String libelle = fraisCheck1.substring(13, longueur - 10);
+                    String montant = fraisCheck1.substring(longueur - 5, longueur);
+                    int id = Id(positionCheck1);
+                    bd.execSQL("UPDATE fraisHorsForfait SET libelle='"+libelle+"', date= '"+date+"', montant= '"+montant+"' WHERE id= '"+id+"'");
+                    adapter.notifyDataSetChanged();
+                    AfficheMessage("Succès", "Informations modifiées");
                 }
-                this.fraisHF.setLibelle(libelle);
-                this.fraisHF.setMontant(montant);
-                this.fraisHF.setDate(date);
-                db.updateHF(fraisHF);
-                this.needRefresh = true;*/
-               /* Editable newValeur1=txtLibelle.getText();
-                Editable newValeur2=txtMontant.getText();
-                Editable newValeur3=txtDate.getText();
-                bd.execSQL("UPDATE fraisHorsForfait SET libelle="+newValeur1+"montant="+newValeur2+"date="+newValeur3+
-                        "WHERE libelle="+ancienneValeur1+"AND montant="+ancienneValeur2+" and date="+ancienneValeur3+ "');");
-                AfficheMessage("Succès", "Information modifiée");
-                videTexte();*/
                 break;
             case R.id.btnSupprimer:
-                if(!checkBox.isChecked()&&!checkBox1.isChecked())
-                {
-                    AfficheMessage("Erreur", "Cocher une case");
-                    return;
-                }
-               /* else{
-                    if(checkBox.isChecked()) {
-                        Cursor c = bd.rawQuery("SELECT * FROM FraisHorsForfait WHERE libelle=" + txtLibelle1.getText(), null);
-                        if(c.moveToFirst())
-                        {
-                            bd.execSQL("DELETE FROM FraisHorsForfait WHERE libelle=" + txtLibelle1.getText() );
-                            AfficheMessage("Succès", "Information détruite");
-                        }
-                        else
-                        {
-                            AfficheMessage("Erreur", "frais inexistant");
-                        }
-                    }else if(checkBox1.isChecked()){
-                        Cursor c = bd.rawQuery("SELECT * FROM FraisHorsForfait WHERE libelle=" + txtLibelle2.getText(), null);
-                        if(c.moveToFirst())
-                        {
-                            bd.execSQL("DELETE FROM FraisHorsForfait WHERE libelle=" + txtLibelle2.getText() );
-                            AfficheMessage("Succès", "Information détruite");
-                        }
-                        else
-                        {
-                            AfficheMessage("Erreur", "frais inexistant");
-                        }
-                    }
-                }
-                videTexte();*/
+                int positionCheck = leLibelle.getCheckedItemPosition();
+                String fraisCheck = leLibelle.getItemAtPosition(positionCheck).toString();
+                adapter.remove(fraisCheck);
+                int id = Id(positionCheck);
+                bd.execSQL("DELETE FROM fraisHorsForfait WHERE id='" + id + "'");
+                adapter.notifyDataSetChanged();
+                AfficheMessage("Succès", "Informations supprimées");
                 break;
             case R.id.btnRetourMenu:
                 MainActivity retour = new MainActivity();
@@ -313,10 +199,50 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-    public void videTexte()
-    {
+
+    public void videTexte() {
         txtLibelle.setText("");
         txtMontant.setText("");
         txtDate.setText("");
+    }
+
+    /*   public void getId(){
+           int positionCheck1 = leLibelle.getCheckedItemPosition();
+           String fraisCheck1=leLibelle.getItemAtPosition(positionCheck1).toString();
+           String date=fraisCheck1.substring(0, 10);
+           String libelle=fraisCheck1.substring(12, 27);
+           int longueur=fraisCheck1.length();
+           String montant=fraisCheck1.substring(longueur-5, longueur);
+           //bd.execSQL("SELECT id FROM fraisHorsForfait WHERE date='"+date+"',libelle='"+libelle+"',montant='"+montant+"'");
+       }*/
+    public Integer getIdFHF(int positionCheck1) {
+     /*DatabaseHelperHF data=new DatabaseHelperHF(this);
+     SQLiteDatabase bd = data.getReadableDatabase();
+     String query = "SELECT id FROM fraisHorsForfait WHERE libelle = '" + libelle +  "' AND date = '" + date + "' AND montant = '"+ montant +"'";
+     Cursor cursor = bd.rawQuery(query, null);
+     cursor.moveToFirst();
+     String id=cursor.getString(0);
+     AfficheMessage("coucou"," "+id);*/
+        final Cursor cursor = db.listeFHF();
+        int id1 = 0;
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            AfficheMessage("coucou", " " + id);
+            //if(cposition==positionCheck1){
+
+            //}else{
+            //    AfficheMessage("erreur",":-(");
+            //}
+         /*String idd = String.valueOf(cursor.moveToPosition(positionCheck1));
+         if(id == idd) {
+             AfficheMessage("coucou", "" + id+idd);
+         }else{
+             AfficheMessage("erreur",":-(");
+         }*/
+            id1=id;//-->stocker ici lid de litem coché et nn le dernier id!!
+        }
+        //int cposition = cursor.getPosition();---> renvoie 3 =derniere position qu'il a parcouru= ne sert a rien!!!
+        AfficheMessage("coucou", " " + id1);
+        return  id1;
     }
 }

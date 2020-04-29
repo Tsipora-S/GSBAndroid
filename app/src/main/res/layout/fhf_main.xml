@@ -121,10 +121,10 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="365dp"
-            android:layout_height="197dp"
+            android:layout_width="350dp"
+            android:layout_height="195dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="53dp">
+            android:layout_marginBottom="55dp">
 
             <!-- <LinearLayout
                  android:layout_width="90dp"
@@ -322,38 +322,39 @@
 
             <ListView
                 android:id="@+id/listFHF"
-                android:layout_width="296dp"
-                android:layout_height="84dp"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="53dp"
+                android:layout_marginBottom="52dp"
                 android:visibility="visible">
 
             </ListView>
 
+
             <Button
                 android:id="@+id/btnModif"
-                android:layout_width="112dp"
-                android:layout_height="50dp"
+                android:layout_width="101dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="80dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="111dp"
+                android:layout_marginBottom="4dp"
                 android:backgroundTint="#8cacd3"
                 android:text="Modifier" />
 
             <Button
                 android:id="@+id/btnSupprimer"
-                android:layout_width="112dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="143dp"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="38dp"
                 android:backgroundTint="#8cacd3"
                 android:text="Supprimer" />
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="41dp"
                 android:layout_height="153dp"
                 android:layout_alignParentEnd="true"
@@ -373,13 +374,13 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="20dp" />
+                    android:layout_height="10dp" />
 
                 <CheckBox
                     android:id="@+id/checkBox5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+            </LinearLayout>-->
 
         </RelativeLayout>
     </RelativeLayout>

@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="384dp"
-        android:layout_height="139dp"
+        android:layout_width="407dp"
+        android:layout_height="145dp"
         android:layout_marginBottom="60dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -52,7 +52,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="155dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="43dp">
 
@@ -192,7 +192,7 @@
                     android:id="@+id/btnAjouter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="85dp"
+                    android:layout_marginLeft="110dp"
                     android:backgroundTint="#8cacd3"
                     android:text="Ajouter" />
 
@@ -206,8 +206,52 @@
             android:layout_marginBottom="69dp">
 
             <LinearLayout
+                android:layout_width="305dp"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="94dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="Libelle"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Quantite"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listFF"
+                    android:layout_width="301dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="209dp"
+                    android:choiceMode="singleChoice" />
+            </LinearLayout>
+
+            <!--<LinearLayout
                 android:layout_width="60dp"
-                android:layout_height="146dp"
+                android:layout_height="160dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="102dp"
@@ -325,9 +369,9 @@
                     android:ems="10"
                     android:inputType="number" />
 
-            </LinearLayout>
+            </LinearLayout>-->
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="185dp"
                 android:layout_alignParentRight="true"
@@ -337,27 +381,45 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="40dp" />
+                    android:layout_height="45dp" />
 
                 <CheckBox
                     android:id="@+id/checkBox3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp" />
+
                 <CheckBox
                     android:id="@+id/checkBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+            </LinearLayout>-->
 
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnSupprimer2"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="143dp"
+                android:layout_marginEnd="14dp"
+                android:backgroundTint="#8cacd3"
+                android:text="Supprimer" />
+
+            <Button
+                android:id="@+id/btnModif2"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="119dp"
+                android:layout_marginBottom="-1dp"
+                android:backgroundTint="#8cacd3"
+                android:text="Modifier" />
+
         </RelativeLayout>
 
     </RelativeLayout>
