@@ -8,28 +8,33 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="407dp"
-        android:layout_height="145dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="419dp"
+        android:layout_height="117dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="110dp"
-            android:layout_height="60dp"
-            android:layout_gravity="left"
-            app:srcCompat="@drawable/logo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="153dp"
-            android:layout_height="43dp"
-            android:layout_gravity="center"
-            android:text="Frais au forfait"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="116dp"
+                android:layout_height="62dp"
+                android:layout_gravity="left"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="153dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="45dp"
+                android:text="Frais au forfait"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -44,17 +49,16 @@
         tools:layout_editor_absoluteX="-41dp" />
 
     <RelativeLayout
-        android:layout_width="399dp"
-        android:layout_height="452dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="414dp"
+        android:layout_height="442dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="215dp">
+        tools:layout_editor_absoluteY="185dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="155dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="43dp">
+            android:layout_height="146dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="90dp">
 
             <LinearLayout
                 android:layout_width="195dp"
@@ -70,15 +74,17 @@
                     android:layout_marginLeft="102dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:text="Libelle"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtQuantite"
-                    android:layout_width="72dp"
+                    android:layout_width="75dp"
                     android:layout_height="20dp"
                     android:layout_marginLeft="102dp"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:text="Quantite"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -191,7 +197,7 @@
                 <Button
                     android:id="@+id/btnAjouter"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="37dp"
                     android:layout_marginLeft="110dp"
                     android:backgroundTint="#8cacd3"
                     android:text="Ajouter" />
@@ -203,51 +209,7 @@
             android:layout_width="match_parent"
             android:layout_height="186dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="69dp">
-
-            <LinearLayout
-                android:layout_width="305dp"
-                android:layout_height="132dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="94dp"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="12dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
-                        android:layout_weight="1"
-                        android:text="Libelle"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="34dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Quantite"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <ListView
-                    android:id="@+id/listFF"
-                    android:layout_width="301dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginBottom="209dp"
-                    android:choiceMode="singleChoice" />
-            </LinearLayout>
+            android:layout_marginBottom="32dp">
 
             <!--<LinearLayout
                 android:layout_width="60dp"
@@ -399,13 +361,59 @@
 
             </LinearLayout>-->
 
+            <LinearLayout
+                android:layout_width="305dp"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="94dp"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="Libelle"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="Quantite"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listFF"
+                    android:layout_width="301dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="209dp"
+                    android:choiceMode="singleChoice" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnSupprimer2"
                 android:layout_width="wrap_content"
                 android:layout_height="43dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="143dp"
-                android:layout_marginEnd="14dp"
+                android:layout_marginTop="134dp"
+                android:layout_marginEnd="18dp"
                 android:backgroundTint="#8cacd3"
                 android:text="Supprimer" />
 
@@ -416,7 +424,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="119dp"
-                android:layout_marginBottom="-1dp"
+                android:layout_marginBottom="8dp"
                 android:backgroundTint="#8cacd3"
                 android:text="Modifier" />
 

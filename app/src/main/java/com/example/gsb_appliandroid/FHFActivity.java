@@ -188,10 +188,6 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
                 retour.setVisible(true);
                 finish();
                 break;
-            /*case R.id.listFHF:
-                Intent intent = new Intent(FHFActivity.this, ModifHF.class);
-                FHFActivity.this.startActivity(intent);
-                break;*/
         }
     }
 
