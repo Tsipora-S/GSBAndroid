@@ -51,6 +51,8 @@ public class CnxActivity extends AppCompatActivity implements View.OnClickListen
                     Cursor cursor = bd.rawQuery(query, null);
                     if (cursor.getCount() != 0) {
                         Intent intent = new Intent(CnxActivity.this, MainActivity.class);
+                        intent.putExtra("login",utilisateur.getText().toString());
+                        intent.putExtra("mdp",mdp.getText().toString());
                         CnxActivity.this.startActivity(intent);
                     }else{
                         AfficheMessage("Erreur", "Login ou Mot de passe incorrect");
@@ -59,7 +61,6 @@ public class CnxActivity extends AppCompatActivity implements View.OnClickListen
                 break;
         }
         }
-
 
     public void AfficheMessage(String titre,String message)
     {

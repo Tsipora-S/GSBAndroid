@@ -1,6 +1,7 @@
 package com.example.gsb_appliandroid;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -35,4 +36,10 @@ public class DatabaseHelperCnx extends SQLiteOpenHelper {
             onCreate(sqLiteDatabase);
         }
 
+        public Cursor recupLoginMdpSaisis(String login,String mdp){
+                SQLiteDatabase db = this.getReadableDatabase();
+                String query = "SELECT * FROM " + DB_TABLE + " WHERE login= '"+login +"' AND mdp= '"+mdp+"'";
+                Cursor cursor = db.rawQuery(query, null);
+                return cursor;
+        }
     }

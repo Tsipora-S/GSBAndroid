@@ -1,7 +1,5 @@
 package com.example.gsb_appliandroid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,6 +46,10 @@ public class MainActivity extends CnxActivity implements View.OnClickListener {
                         break;
                     case R.id.btnParam:
                         Intent intent4 = new Intent(MainActivity.this, ParametresActivity.class);
+                        String loginnn = getIntent().getStringExtra("login");
+                        String mdppp = getIntent().getStringExtra("mdp");
+                        intent4.putExtra("login",loginnn);
+                        intent4.putExtra("mdp",mdppp);
                         startActivity(intent4);
                         break;
                     case R.id.btnFHF:
