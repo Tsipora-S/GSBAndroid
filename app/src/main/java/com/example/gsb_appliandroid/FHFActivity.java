@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,19 +20,9 @@ import java.util.ArrayList;
 public class FHFActivity extends MainActivity implements View.OnClickListener {
     SQLiteDatabase bd;
     DatabaseHelperHF db;
-    EditText txtLibelle, txtLibelle1, txtLibelle2, txtMontant, txtMontant1, txtMontant2, txtDate, txtDate1, txtDate2;
-    CheckBox checkBox, checkBox1;
+    EditText txtLibelle,txtMontant,txtDate;
     Button btnAjouter, btnModifier, btnSupprimer, btnRetourMenu;
     ListView leLibelle;
- /*   FHFActivity frais= new FHFActivity();
-    List<FHFActivity> FraisHorsForfait;
-    FraisHorsForfait=new ArrayList<FHFActivity>();*/
-
-    fraisHF fraisHF;
-    private EditText libelle1;
-    private EditText montant1;
-    private EditText date1;
-    private boolean needRefresh;
     ArrayList<String> listItem;
     ArrayAdapter adapter;
 
@@ -51,9 +40,6 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 String text = leLibelle.getItemAtPosition(i).toString();
-                //Toast.makeText(FHFActivity.this, "" +text, Toast.LENGTH_SHORT).show();
-                //view.getTag();
-                //on créé une boite de dialogue
                 AlertDialog.Builder adb = new AlertDialog.Builder(FHFActivity.this);
                 adb.setTitle("Sélection Item");
                 final EditText input = new EditText(FHFActivity.this);
@@ -70,31 +56,13 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
                 adb.show();
             }
         });
-        //    this.libelle1 = (EditText)this.findViewById(R.id.txtLibelle1);
-        //    this.montant1 = (EditText)this.findViewById(R.id.txtMontant1);
-        //    this.date1= (EditText)this.findViewById(R.id.txtDate1);
-   /*     Intent intent = this.getIntent();
-       this.fraisHF = (fraisHF) intent.getSerializableExtra("fraisHF");
-       this.libelle1.setText(fraisHF.getLibelle());
-       this.montant1.setText(fraisHF.getMontant());
-       this.date1.setText(fraisHF.getDate());*/
-        //   new GetEdittext().execute();
-        //  remplissageEditText();
     }
 
     private void init() {
         txtLibelle = (EditText) findViewById(R.id.txtLibelle);
-        //txtLibelle1 =(EditText) findViewById(R.id.txtLibelle1);
-        //txtLibelle2 =(EditText) findViewById(R.id.txtLibelle2);
         leLibelle = findViewById(R.id.listFHF);
         txtMontant = (EditText) findViewById(R.id.txtMontant);
-        //txtMontant1=(EditText)findViewById(R.id.txtMontant1);
-        //txtMontant2=(EditText) findViewById(R.id.txtMontant2);
         txtDate = (EditText) findViewById(R.id.txtDate);
-        //txtDate1=(EditText)findViewById(R.id.txtDate1);
-        //txtDate2=(EditText)findViewById(R.id.txtDate2);
-        //checkBox=findViewById(R.id.checkBox6);
-        //checkBox1=findViewById(R.id.checkBox5);
         btnAjouter = (Button) findViewById(R.id.btnAjouter);
         btnModifier = (Button) findViewById(R.id.btnModif);
         btnSupprimer = (Button) findViewById(R.id.btnSupprimer);
@@ -131,17 +99,12 @@ public class FHFActivity extends MainActivity implements View.OnClickListener {
     }
 
     public int Id(final int i){
-        String text = leLibelle.getItemAtPosition(i).toString();
-        int longueur = text.length();
         final Cursor cursor = db.listeFHF();
         cursor.moveToPosition(i);
-            int id = cursor.getInt(0);
+        int id = cursor.getInt(0);
         return id;
     }
 
-    /*private void updateFHF() {
-        Cursor cursor = db.updateHF(item);
-    }*/
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

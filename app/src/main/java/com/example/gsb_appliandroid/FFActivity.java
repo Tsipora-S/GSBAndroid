@@ -173,9 +173,8 @@ public class FFActivity extends MainActivity implements View.OnClickListener {//
                              AfficheMessage("Erreur", "Entrer toutes les valeurs");
                              return;
                          }
-                         bd.execSQL("INSERT INTO fraisForfait(libelle,quantite) VALUES('KM','" + txtKM.getText()+"'" +
-                                 "),('ETP','" + txtETP.getText()+ "'),('REP','"+ txtRepas.getText() + "'),('NUI','" + txtNuitee.getText() + "')");
-                         //INSERT INTO fraisForfait(libelle,montant) VALUES("KM","5"),("ETP","5"),("NUI","5"),("REP","5")
+                         bd.execSQL("INSERT INTO fraisForfait(libelle,quantite) VALUES('ETP','" + txtETP.getText()+ "')," +
+                                 "('KM','" + txtKM.getText()+"'),('NUI','" + txtNuitee.getText() + "'),('REP','"+ txtRepas.getText() + "')");
                          AfficheMessage("Succès", "Information ajoutée");
                          videTexte();
                          break;

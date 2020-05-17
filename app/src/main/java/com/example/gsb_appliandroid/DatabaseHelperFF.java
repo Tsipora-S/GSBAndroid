@@ -52,4 +52,10 @@ public class DatabaseHelperFF extends SQLiteOpenHelper {
         return cursor;
 
     }
+    public Cursor typeFF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "select * from typeFraisForfait";
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
 }
